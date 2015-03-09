@@ -26,14 +26,13 @@ game.PlayerEntity = me.Entity.extend({
             //setVelocity() and multiplying it by me.timer.tick
             //me.timer.tick makes the movement loook smooth
             this.body.vel.x += this.body.accel.x * me.timer.tick;
-            this.renderable.setCurrentAnimation("walk");
             this.flipX(true);
         } else{
             this.body.vel.x = 0;
         } 
         
         if(this.body.vel.x !== 0){
-        if(!this.renderable.isCurrentAnimation("walk")){
+            if(!this.renderable.isCurrentAnimation("walk")){
                 this.renderable.setCurrentAnimation("walk");
             }
         }else{
@@ -43,7 +42,7 @@ game.PlayerEntity = me.Entity.extend({
         if (me.input.isKeyPressed("left")) {
             this.flipX(!this.walkLeft);
             this.body.vel.x -= (this.walkLeft) ? -this.body.accel.x * me.timer.tick : this.body.accel.x * me.timer.tick;
-            this.flipX(!this.walkRight);
+            //this.flipX(!this.walkRight);
 
         } 
          if (me.input.isKeyPressed("up")){
